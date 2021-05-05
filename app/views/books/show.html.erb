@@ -57,6 +57,14 @@
         </tbody>
       </table>
       <p>
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %> error
+        <% @book.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      </p>
+      <p>
       <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
       <%= f.text_area :comment %><br>
       <%= f.submit "送信" %>
